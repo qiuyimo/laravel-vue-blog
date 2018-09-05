@@ -35,4 +35,15 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    /**
+     * GitHub 第三方登录.
+     */
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect_uri' => 'http://blog.qiuyuhome.com/github/callback',
+        'scope' => '*',
+        'state' => env('GITHUB_STATE'),
+        'allow_signup' => true,
+    ]
 ];
