@@ -27,10 +27,10 @@ Route::get('/redirect', function () {
         'client_id' => '9aba3c14c3aa9d1bf4df',
         'redirect_uri' => 'http://blog.qiuyuhome.com/github/callback',
         'response_type' => 'code',
-        'scope' => '',
+        'scope' => '*',
     ]);
 
-    return redirect('http://blog.qiuyuhome.com/oauth/authorize?'.$query);
+    return redirect('https://github.com/login/oauth/authorize?'.$query);
 });
 
 /**
@@ -39,7 +39,7 @@ Route::get('/redirect', function () {
 Route::get('/github/callback', function (Request $request) {
     $http = new GuzzleHttp\Client;
 
-    $response = $http->post('http://laravel-passport.com/oauth/token', [
+    $response = $http->post('https://github.com/login/oauth/access_token', [
         'form_params' => [
             'grant_type' => 'authorization_code',
             'client_id' => '9aba3c14c3aa9d1bf4df',
