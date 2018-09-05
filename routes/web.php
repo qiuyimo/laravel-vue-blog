@@ -20,7 +20,7 @@ Route::get('/', function () {
  * 获取 github 的 code.
  * 文档. https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/
  */
-Route::get('/redirect', function () {
+Route::get('/github/login', function () {
     $query = http_build_query([
         'client_id' => config('services.github.client_id'),
         'redirect_uri' => 'http://blog.qiuyuhome.com/github/callback',
@@ -34,7 +34,7 @@ Route::get('/redirect', function () {
 });
 
 /**
- * 获取 access_token.
+ * 获取 access_token. 获取用户信息.
  */
 Route::get('/github/callback', function (Request $request) {
     // 根据 code, 获取 access_token.
